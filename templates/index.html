@@ -1,0 +1,41 @@
+<html>
+
+<head />
+
+<body>
+    <div class="login" />
+    <h1>HOUSING PREDICTION</h1>
+
+
+    <img src="{{ url_for('static', filename='house.jpg') }}" width="300" height="200" />
+    <div>
+        <form action="{{ url_for('predict') }}" method="post">
+            <br><br>
+            <label for="Households">Households</label>
+            <input type="text" id="households" name="households">
+            <br><br>
+            <label for="ocean_proximity">Ocean proximity</label>
+            <!-- <input type="text" id="ocean_proximity" name="ocean_proximity"> -->
+            <select name="ocean_proximity" id="ocean_proximity">
+                <option value="100m Near Ocean">OCEAN</option>
+                <option value="INLAND">INLAND</option>
+                <option value="ISLAND">ISLAND</option>
+                <option value="NEAR BAY">NEAR BAY</option>
+                <option value="NEAR OCEAN">NEAR OCEAN</option>
+            </select>
+            <br><br>
+
+            <button type="submit" class=" btn btn-primary btn-block btn-large">Predict House Price</button>
+        </form>
+        <br>
+        <br>
+
+
+        {% if output %}
+            <span>The cost of purchasing a house in this area will be {{ output }}</span>
+        {% endif %}
+
+    </div>
+</body>
+
+</html>
